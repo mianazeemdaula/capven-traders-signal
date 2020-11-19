@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "165163027344",
+    "firebase_url": "https://capven-trader-app.firebaseio.com",
+    "project_id": "capven-trader-app",
+    "storage_bucket": "capven-trader-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:165163027344:android:5e8a61a85f64c0fe3cc115",
+        "android_client_info": {
+          "package_name": "com.capventraders"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "165163027344-6798cdsi8v89sj31gt63brha5ejkru9o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.capventraders",
+            "certificate_hash": "f0934dc7d2f5e390f42247657baca258b780091b"
+          }
+        },
+        {
+          "client_id": "165163027344-7pj4555ofth2ri490gp11i0669uaheam.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTkz0VtSyCW6QQ8eUAPSPb8NF13XA9pn8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "165163027344-7pj4555ofth2ri490gp11i0669uaheam.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
