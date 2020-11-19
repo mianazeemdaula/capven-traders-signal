@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:tradiing_app/bloc/inapp_subscription_service.dart';
 import 'package:tradiing_app/helpers/constants.dart';

@@ -3,20 +3,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tradiing_app/helpers/constants.dart';
 
-Future<dynamic> myBackgroundMessageHandler(Map<String, dynamic> message) async {
-  if (message.containsKey('data')) {
-    print("onBackground: $message");
-    // Handle data message
-    final dynamic data = message['data'];
-  }
+// Future<dynamic> myBackgroundMessageHandler(Map<String, dynamic> message) async {
+//   if (message.containsKey('data')) {
+//     print("onBackground: $message");
+//     // Handle data message
+//     final dynamic data = message['data'];
+//   }
 
-  if (message.containsKey('notification')) {
-    // Handle notification message
-    final dynamic notification = message['notification'];
-  }
+//   if (message.containsKey('notification')) {
+//     // Handle notification message
+//     final dynamic notification = message['notification'];
+//   }
 
-  // Or do other work.
-}
+//   // Or do other work.
+// }
 
 class FCM {
   static get instance => _singleton;
@@ -65,7 +65,7 @@ class FCM {
   }
 
   processNotification(Map<String, dynamic> msg) async {
-    String title, body, type = 'undefined', id;
+    String title, body, type = 'undefined';
     if (msg.containsKey('notification')) {
       if (msg['notification'].containsKey('title')) {
         title = msg['notification']['title'];
@@ -79,12 +79,8 @@ class FCM {
       if (msg['data'].containsKey('body') && body == null) {
         title = msg['data']['body'];
       }
-
       if (msg['data'].containsKey('type')) {
         type = msg['data']['type'];
-      }
-      if (msg['data'].containsKey('id')) {
-        id = msg['data']['id'];
       }
     }
     title = title ?? "Title not set";
