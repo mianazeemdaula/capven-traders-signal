@@ -1,6 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tradiing_app/helpers/constants.dart';
 
 Future<dynamic> myBackgroundMessageHandler(Map<String, dynamic> message) async {
   if (message.containsKey('data')) {
@@ -29,9 +30,11 @@ class FCM {
   // Objects and variables
   final FirebaseMessaging _messageing = FirebaseMessaging();
   BuildContext _context;
+  Function _pageIndex;
 
-  void init(BuildContext context) {
+  void init(BuildContext context, Function pageIndex) {
     _context = context;
+    _pageIndex = pageIndex;
     _messageing.configure(
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
@@ -40,17 +43,25 @@ class FCM {
       // onBackgroundMessage: myBackgroundMessageHandler,
       onLaunch: (Map<String, dynamic> message) async {
         print("onLaunch: $message");
-        // _navigateToItemDetail(message);
-        processNotification(message);
+        if (message.containsKey('data') &&
+            message['data'].containsKey('type')) {
+          navigatTo(message['data']['type']);
+        } else {
+          processNotification(message);
+        }
       },
       onResume: (Map<String, dynamic> message) async {
         print("onResume: $message");
-        processNotification(message);
-        // _navigateToItemDetail(message);
+        if (message.containsKey('data') &&
+            message['data'].containsKey('type')) {
+          navigatTo(message['data']['type']);
+        } else {
+          processNotification(message);
+        }
       },
     );
     _messageing.getToken().then((token) => print(token));
-    _messageing.subscribeToTopic('customer');
+    _messageing.subscribeToTopic('client');
   }
 
   processNotification(Map<String, dynamic> msg) async {
@@ -78,15 +89,35 @@ class FCM {
     }
     title = title ?? "Title not set";
     body = body ?? "Body not set";
-    if (type == 'message') {
-      navigatTo("/message");
+    if (type == 'forex' ||
+        type == 'message' ||
+        type == 'indices' ||
+        type == 'options') {
+      navigatTo(type);
     } else {
       showNotificationDialog(title, body);
     }
   }
 
-  navigatTo(String page) {
-    Navigator.pushNamed(_context, page);
+  navigatTo(String type) {
+    int index = 0;
+    switch (type) {
+      case 'forex':
+        index = 0;
+        break;
+      case 'indices':
+        index = 1;
+        break;
+      case 'options':
+        index = 2;
+        break;
+      case 'message':
+        index = 3;
+        break;
+      default:
+        index = 0;
+    }
+    _pageIndex(index);
   }
 
   showNotificationDialog(String title, String body) {
@@ -99,20 +130,24 @@ class FCM {
         title: Container(
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: Colors.green,
+            color: kSecondaryColor,
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(8),
               topLeft: Radius.circular(8),
             ),
           ),
-          child: Text(title),
+          child: Text(title, style: TextStyle(color: Colors.white)),
         ),
         content: Text(body),
         actions: [
           Container(
             child: RaisedButton(
+              color: kPrimaryColor,
               onPressed: () => Navigator.pop(_context),
-              child: Text("OK"),
+              child: Text(
+                "OK",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           )
         ],

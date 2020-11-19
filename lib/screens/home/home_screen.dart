@@ -20,7 +20,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    FCM().init(context);
+    FCM().init(context, changePageIndex);
+  }
+
+  changePageIndex(int i) {
+    setState(() {
+      _index = i;
+    });
   }
 
   @override
@@ -69,11 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
         showUnselectedLabels: true,
         unselectedItemColor: Colors.black,
         type: BottomNavigationBarType.shifting,
-        onTap: (int index) {
-          setState(() {
-            _index = index;
-          });
-        },
+        onTap: changePageIndex,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.graphic_eq),
