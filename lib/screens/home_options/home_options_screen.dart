@@ -11,7 +11,10 @@ class HomeOptionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: kOptionsDb.where('status', isEqualTo: 'active').snapshots(),
+      stream: kOptionsDb
+          .where('status', isEqualTo: 'active')
+          .orderBy('date', descending: true)
+          .snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return Center(

@@ -11,7 +11,10 @@ class HomeIndicesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: kIndicesDb.where('status', isEqualTo: 'active').snapshots(),
+      stream: kIndicesDb
+          .where('status', isEqualTo: 'active')
+          .orderBy('date', descending: true)
+          .snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return Center(

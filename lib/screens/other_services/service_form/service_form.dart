@@ -7,6 +7,7 @@ import 'package:tradiing_app/bloc/inapp_subscription_service.dart';
 import 'package:tradiing_app/bloc/auth_service.dart';
 import 'package:tradiing_app/components/default_button.dart';
 import 'package:tradiing_app/helpers/constants.dart';
+import 'package:tradiing_app/helpers/library.dart';
 import 'package:tradiing_app/helpers/size_config.dart';
 
 class ServiceFormScreen extends StatefulWidget {
@@ -86,6 +87,7 @@ class _ServiceFormScreenState extends State<ServiceFormScreen> {
         if (details != null) {
           await kServiceDb.doc().set({
             'user': auth.user.uid,
+            'name': auth.user.displayName,
             'service_type': id,
             'trans_id': details.purchaseID,
             'trans_date': details.transactionDate,
@@ -94,7 +96,9 @@ class _ServiceFormScreenState extends State<ServiceFormScreen> {
             'skype': _formKey.currentState.value['skype']
           });
           await context.read<IAPService>().consumeItem('$id');
-          kSuccessSnakbar('Your contact information sumitted.');
+          kSuccessSnakbar('Your contact information submitted.');
+          await Helper.topicNotification('Service Required',
+              auth.user.displayName + ' request a service', 'service');
           Navigator.pop(context);
         }
       }
@@ -102,10 +106,12 @@ class _ServiceFormScreenState extends State<ServiceFormScreen> {
         loading = false;
       });
     } catch (e) {
-      setState(() {
-        loading = false;
-      });
-      kErrorSnakbar(e);
+      if (mounted) {
+        setState(() {
+          loading = false;
+        });
+        kErrorSnakbar(e);
+      }
     }
   }
 }
