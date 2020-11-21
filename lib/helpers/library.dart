@@ -35,17 +35,17 @@ class Helper {
 
   static Color getOptionColor(String conitdion) {
     conitdion = conitdion.trim().toUpperCase();
-    if (conitdion == 'PUT')
+    if (conitdion == 'CALL')
       return Colors.green;
-    else if (conitdion == 'CALL') return Colors.red;
+    else if (conitdion == 'PUT') return Colors.red;
     return Colors.orange;
   }
 
   static IconData getOptionIcon(String conitdion) {
     conitdion = conitdion.trim().toUpperCase();
-    if (conitdion == 'PUT')
+    if (conitdion == 'CALL')
       return Icons.arrow_upward;
-    else if (conitdion == 'CALL') return Icons.arrow_downward;
+    else if (conitdion == 'PUT') return Icons.arrow_downward;
     return Icons.date_range;
   }
 }
