@@ -13,7 +13,7 @@ class Bullet extends StatelessWidget {
           height: 15,
           width: 15,
           decoration: BoxDecoration(
-            color: Colors.black,
+            color: Colors.white,
             borderRadius: BorderRadius.circular(20),
           ),
         ),

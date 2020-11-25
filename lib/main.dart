@@ -38,21 +38,21 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         darkTheme: ThemeData(
             primaryColor: kAppColor,
-            // brightness: Brightness.dark,
+            brightness: Brightness.dark,
             accentColor: kSecondaryColor,
             visualDensity: VisualDensity.adaptivePlatformDensity,
             appBarTheme: AppBarTheme(
               centerTitle: true,
-              color: kSecondaryColor,
+              // color: kSecondaryColor,
             ),
             textTheme: GoogleFonts.overpassTextTheme(
               Theme.of(context).textTheme.copyWith(
-                  // headline3: TextStyle(color: Colors.white),
-                  // headline6: TextStyle(color: Colors.white),
-                  // bodyText1: TextStyle(color: Colors.white),
-                  // bodyText2: TextStyle(color: Colors.white),
-                  // button: TextStyle(color: Colors.white),
-                  // subtitle1: TextStyle(color: Colors.white),
+                    headline3: TextStyle(color: Colors.white),
+                    headline6: TextStyle(color: Colors.white),
+                    bodyText1: TextStyle(color: Colors.white),
+                    bodyText2: TextStyle(color: Colors.white),
+                    button: TextStyle(color: Colors.white),
+                    subtitle1: TextStyle(color: Colors.white),
                   ),
             )
             // textTheme: GoogleFonts.latoTextTheme(

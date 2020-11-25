@@ -10,6 +10,7 @@ class MoreGridTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Material(
+        color: Colors.black,
         borderRadius: BorderRadius.circular(10),
         elevation: 5.0,
         child: InkWell(

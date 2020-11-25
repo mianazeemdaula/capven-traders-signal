@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _index,
-        selectedItemColor: kSecondaryColor,
+        selectedItemColor: Colors.white,
         showUnselectedLabels: true,
         unselectedItemColor: Colors.black,
         type: BottomNavigationBarType.shifting,

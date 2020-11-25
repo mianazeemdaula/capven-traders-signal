@@ -13,7 +13,7 @@ class MessageList extends StatelessWidget {
       itemCount: messages.length,
       itemBuilder: (context, index) {
         return Bubble(
-          color: Colors.white,
+          color: Colors.black,
           margin: BubbleEdges.only(top: 30, right: 50, bottom: 5),
           alignment: Alignment.topLeft,
           nipWidth: 8,
@@ -27,12 +27,15 @@ class MessageList extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .bodyText1
-                    .copyWith(color: Colors.black),
+                    .copyWith(color: Colors.white),
               ),
               SizedBox(height: 5),
               Text(
                 "${messages[index].date}",
-                style: Theme.of(context).textTheme.overline,
+                style: Theme.of(context)
+                    .textTheme
+                    .overline
+                    .copyWith(color: Colors.white),
               ),
             ],
           ),

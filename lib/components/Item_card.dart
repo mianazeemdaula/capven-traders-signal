@@ -30,7 +30,7 @@ class ItemCard extends StatelessWidget {
               padding: EdgeInsets.all(15),
               margin: EdgeInsets.only(top: 5),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.black,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Column(
@@ -44,7 +44,8 @@ class ItemCard extends StatelessWidget {
                   ),
                   SizedBox(height: getUiHeight(10)),
                   Text(
-                    pair.toUpperCase(),
+                    // pair.toUpperCase(),
+                    "${MediaQuery.of(context).platformBrightness}",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.headline6,

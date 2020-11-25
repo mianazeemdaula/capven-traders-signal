@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:tradiing_app/bloc/inapp_subscription_service.dart';
 import 'package:tradiing_app/helpers/constants.dart';
@@ -7,8 +10,14 @@ import 'components/bullet.dart';
 import 'package:tradiing_app/bloc/auth_service.dart';
 import 'package:tradiing_app/models/user_model.dart';
 import 'package:tradiing_app/components/default_button.dart';
+import 'package:tradiing_app/screens/webview/webview_scree.dart';
 
 class SubscribeScreen extends StatelessWidget {
+  String _android =
+      'Payment will be charged to Google Play Account at confirmation of the purchase. Subscription automatically renews, untill auto renew is turned off at least 24-hours before the end of the current period, and identify the cost of the renewal. Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user Account Setting after purchase. Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable.';
+  String _ios =
+      'Payment will be charged to iTune Account at confirmation of the purchase. Subscription automatically renews, untill auto renew is turned off at least 24-hours before the end of the current period, and identify the cost of the renewal. Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user Account Setting after purchase. Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable.';
+
   @override
   Widget build(BuildContext context) {
     final _auth = context.select<UserRepository, Auth>((value) => value.auth);
@@ -71,18 +80,32 @@ class SubscribeScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text(
-                    "Term of Use",
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(WebViewScreen(
+                        url: "https://capven-traders.flycricket.io/terms.html",
+                      ));
+                    },
+                    child: Text(
+                      "Term of Use",
+                    ),
                   ),
                   SizedBox(width: 20),
-                  Text(
-                    "Privacy Policy",
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(WebViewScreen(
+                        url: "https://capven-traders.flycricket.io/terms.html",
+                      ));
+                    },
+                    child: Text(
+                      "Privacy Policy",
+                    ),
                   ),
                 ],
               ),
               SizedBox(height: getUiHeight(20)),
               Text(
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                Platform.isAndroid ? _android : _ios,
                 textAlign: TextAlign.center,
               ),
             ],

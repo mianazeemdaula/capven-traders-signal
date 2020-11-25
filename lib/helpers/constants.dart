@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-const Color kPrimaryColor = Color(0XFF000000);
-const Color kSecondaryColor = Color(0XFF6a097d);
-const Color kTextColor = Color(0XFFf1d4d4);
-const Color kText2Color = Color(0XFFc060a1);
+const Color kPrimaryColor = Color(0xFF9e44b6);
+const Color kSecondaryColor = Color(0xFF6a097d);
+const Color kTextColor = Color(0xFFf1d4d4);
+const Color kText2Color = Color(0xFFc060a1);
 
 Map<int, Color> colorCodes = {
   50: Color.fromRGBO(0, 0, 0, .1),

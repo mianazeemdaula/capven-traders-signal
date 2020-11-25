@@ -11,8 +11,8 @@ class MoreGridTile extends StatelessWidget {
       child: Material(
         borderRadius: BorderRadius.circular(10),
         elevation: 5.0,
-        shadowColor: Colors.grey,
-        color: Colors.grey,
+        shadowColor: Colors.white,
+        color: Colors.black,
         child: InkWell(
           onTap: onTap,
           child: Container(
