@@ -31,7 +31,7 @@ class MessageList extends StatelessWidget {
               ),
               SizedBox(height: 5),
               Text(
-                "${messages[index].date}",
+                "${messages[index].date}".substring(0, 16),
                 style: Theme.of(context)
                     .textTheme
                     .overline

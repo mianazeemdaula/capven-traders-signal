@@ -34,82 +34,82 @@ class SubscribeScreen extends StatelessWidget {
         ],
       ),
       body: Container(
-        padding: const EdgeInsets.all(25),
-        child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox(height: getUiHeight(5)),
-              Text(
-                "Hi, ${_auth.name}",
-                style: TextStyle(
-                  color: kPrimaryColor,
-                  fontSize: getUiWidth(28),
-                  fontWeight: FontWeight.bold,
+        padding: EdgeInsets.all(25),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SizedBox(height: getUiHeight(5)),
+            Text(
+              "Hi, ${_auth.name}",
+              style: TextStyle(
+                color: kPrimaryColor,
+                fontSize: getUiWidth(28),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              "Welcome to CapvenTrading Signals",
+            ),
+            SizedBox(height: getUiHeight(20)),
+            Bullet(title: "Signals"),
+            SizedBox(height: getUiHeight(10)),
+            Bullet(title: "Webinars"),
+            SizedBox(height: getUiHeight(10)),
+            Bullet(title: "24/7 Support"),
+            SizedBox(height: getUiHeight(10)),
+            Bullet(title: "Bonus : Free Course"),
+            SizedBox(height: getUiHeight(10)),
+            Bullet(title: "And many more"),
+            Expanded(
+              child: Container(),
+            ),
+            DefaultButton(
+              press: () async {
+                await context.read<IAPService>().purchaseItem(
+                      'month_subscription',
+                      isConsumable: false,
+                    );
+              },
+              text: "Get Access Now (\$99.99/Per Month)",
+            ),
+            SizedBox(height: 10),
+            Text(
+              "Cancel anytime",
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Get.to(WebViewScreen(
+                      url: "https://capven-traders.flycricket.io/terms.html",
+                    ));
+                  },
+                  child: Text(
+                    "Term of Use",
+                  ),
                 ),
-              ),
-              Text(
-                "Welcome to CapvenTrading Signals",
-              ),
-              SizedBox(height: 20),
-              Bullet(title: "Signals"),
-              SizedBox(height: 10),
-              Bullet(title: "Webinars"),
-              SizedBox(height: 10),
-              Bullet(title: "24/7 Support"),
-              SizedBox(height: 10),
-              Bullet(title: "Bonus : Free Course"),
-              SizedBox(height: 10),
-              Bullet(title: "And many more"),
-              Spacer(),
-              DefaultButton(
-                press: () async {
-                  await context.read<IAPService>().purchaseItem(
-                        'month_subscription',
-                        isConsumable: false,
-                      );
-                },
-                text: "Get Access Now (\$99.99/Per Month)",
-              ),
-              SizedBox(height: 10),
-              Text(
-                "Cancel anytime",
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Get.to(WebViewScreen(
-                        url: "https://capven-traders.flycricket.io/terms.html",
-                      ));
-                    },
-                    child: Text(
-                      "Term of Use",
-                    ),
+                SizedBox(width: 20),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(WebViewScreen(
+                      url: "https://capven-traders.flycricket.io/terms.html",
+                    ));
+                  },
+                  child: Text(
+                    "Privacy Policy",
                   ),
-                  SizedBox(width: 20),
-                  GestureDetector(
-                    onTap: () {
-                      Get.to(WebViewScreen(
-                        url: "https://capven-traders.flycricket.io/terms.html",
-                      ));
-                    },
-                    child: Text(
-                      "Privacy Policy",
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: getUiHeight(20)),
-              Text(
-                Platform.isAndroid ? _android : _ios,
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
+                ),
+              ],
+            ),
+            SizedBox(height: getUiHeight(20)),
+            Text(
+              Platform.isAndroid ? _android : _ios,
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
       ),
     );

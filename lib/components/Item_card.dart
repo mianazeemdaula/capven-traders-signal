@@ -44,8 +44,8 @@ class ItemCard extends StatelessWidget {
                   ),
                   SizedBox(height: getUiHeight(10)),
                   Text(
-                    // pair.toUpperCase(),
-                    "${MediaQuery.of(context).platformBrightness}",
+                    pair.toUpperCase(),
+                    // "${MediaQuery.of(context).platformBrightness}",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.headline6,
