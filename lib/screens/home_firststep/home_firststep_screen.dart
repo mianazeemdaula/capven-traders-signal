@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tradiing_app/bloc/remote_config_service.dart';
 import 'package:tradiing_app/screens/other_services/service_middleware.dart';
+import 'package:tradiing_app/screens/webview/webview_scree.dart';
 
 import 'components/grid_tile.dart';
 
@@ -16,12 +18,20 @@ class HomeFirstStepScreen extends StatelessWidget {
             children: [
               MoreGridTile(
                 title: "Welcome",
-                onTap: () {},
+                onTap: () {
+                  Get.to(WebViewScreen(
+                    url: RemotConf().getUrl('welcome_page'),
+                  ));
+                },
               ),
               SizedBox(width: 20),
               MoreGridTile(
                 title: "How the app work",
-                onTap: () {},
+                onTap: () {
+                  Get.to(WebViewScreen(
+                    url: RemotConf().getUrl('how_app_work'),
+                  ));
+                },
               ),
             ],
           ),
@@ -31,12 +41,20 @@ class HomeFirstStepScreen extends StatelessWidget {
             children: [
               MoreGridTile(
                 title: "Risk Managment",
-                onTap: () {},
+                onTap: () {
+                  Get.to(WebViewScreen(
+                    url: RemotConf().getUrl('riks_management'),
+                  ));
+                },
               ),
               SizedBox(width: 20),
               MoreGridTile(
                 title: "How to trade",
-                onTap: () {},
+                onTap: () {
+                  Get.to(WebViewScreen(
+                    url: RemotConf().getUrl('how_to_trade'),
+                  ));
+                },
               ),
             ],
           ),

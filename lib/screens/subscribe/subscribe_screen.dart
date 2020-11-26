@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:tradiing_app/bloc/inapp_subscription_service.dart';
+import 'package:tradiing_app/bloc/remote_config_service.dart';
 import 'package:tradiing_app/helpers/constants.dart';
 import 'package:tradiing_app/helpers/size_config.dart';
 import 'components/bullet.dart';
@@ -34,7 +35,7 @@ class SubscribeScreen extends StatelessWidget {
         ],
       ),
       body: Container(
-        padding: EdgeInsets.all(25),
+        padding: EdgeInsets.all(getUiHeight(10)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -84,7 +85,7 @@ class SubscribeScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Get.to(WebViewScreen(
-                      url: "https://capven-traders.flycricket.io/terms.html",
+                      url: RemotConf().getUrl('terms_and_coniditons'),
                     ));
                   },
                   child: Text(
@@ -95,7 +96,7 @@ class SubscribeScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Get.to(WebViewScreen(
-                      url: "https://capven-traders.flycricket.io/terms.html",
+                      url: RemotConf().getUrl('term_of_use'),
                     ));
                   },
                   child: Text(

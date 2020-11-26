@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
+import 'package:tradiing_app/bloc/remote_config_service.dart';
 
 enum SubscriptionStatus { Subscribed, Expire, NotSubscribed }
 enum ServiceStatus { PremiumService, AdvanceService, NotPurchased }
@@ -24,6 +25,7 @@ class IAPService with ChangeNotifier {
 
   IAPService() {
     startService();
+    RemotConf();
   }
 
   startService() async {
