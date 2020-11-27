@@ -150,8 +150,6 @@ class UserRepository with ChangeNotifier {
           .get();
       if (doc.exists) {
         _auth = Auth.fromSnapshot(doc);
-        // Listen for chaning in user
-        print("${doc.reference}");
         doc.reference.snapshots().listen((event) => refreshUserData);
         await _firebaseAuth.currentUser.updateProfile(
           displayName: doc.data()['name'],
