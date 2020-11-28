@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:tradiing_app/bloc/fcm_services.dart';
 import 'package:tradiing_app/helpers/constants.dart';
@@ -20,7 +22,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    FCM().init(context, changePageIndex);
+    if (Platform.isAndroid) {
+      FCM().init(context, changePageIndex);
+    }
   }
 
   changePageIndex(int i) {

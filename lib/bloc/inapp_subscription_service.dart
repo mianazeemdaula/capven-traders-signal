@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
@@ -90,10 +91,17 @@ class IAPService with ChangeNotifier {
     if (response.error != null) {
       printError(info: "Query PastPurchase Error : ${response.error.message}");
     }
+    for (PurchaseDetails purchase in response.pastPurchases) {
+      if (Platform.isIOS) {
+        InAppPurchaseConnection.instance.completePurchase(purchase);
+      }
+    }
     // if (response.pastPurchases.isEmpty) {
     //   ProductDetails product = await getProductDetails('month_subscription');
     //   await purchaseItem(product);
+
     // }
+
     printInfo(info: "Past Purchase Length : ${response.pastPurchases.length}");
     _purchasesList = [];
     _purchasesList.addAll(response.pastPurchases);
