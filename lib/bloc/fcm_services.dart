@@ -2,7 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tradiing_app/helpers/constants.dart';
-
+import 'dart:io';
 // Future<dynamic> myBackgroundMessageHandler(Map<String, dynamic> message) async {
 //   if (message.containsKey('data')) {
 //     print("onBackground: $message");
@@ -62,6 +62,12 @@ class FCM {
     );
     _messageing.getToken().then((token) => print(token));
     _messageing.subscribeToTopic('client');
+    if (Platform.isAndroid) {
+      _messageing.requestNotificationPermissions(
+        IosNotificationSettings(
+            sound: true, alert: true, badge: true, provisional: false),
+      );
+    }
   }
 
   processNotification(Map<String, dynamic> msg) async {

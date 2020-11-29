@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:tradiing_app/bloc/fcm_services.dart';
-import 'package:tradiing_app/helpers/constants.dart';
 import 'package:tradiing_app/screens/home/components/home_drawer.dart';
 import 'package:tradiing_app/screens/home_chat/home_chat_screen.dart';
 import 'package:tradiing_app/screens/home_firststep/home_firststep_screen.dart';
@@ -22,9 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    if (Platform.isAndroid) {
-      FCM().init(context, changePageIndex);
-    }
+    if (Platform.isAndroid) {}
+    FCM().init(context, changePageIndex);
   }
 
   changePageIndex(int i) {
