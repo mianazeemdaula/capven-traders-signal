@@ -33,7 +33,7 @@ class ServiceCarouselSlider extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10)),
                 child: Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(8),
                   child: Column(
                     children: [
                       Text(
