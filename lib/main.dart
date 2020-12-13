@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => UserRepository.instance()),
         ChangeNotifierProvider<IAPService>(
           create: (_) => IAPService(),
-          lazy: false,
+          // lazy: false,
         ),
       ],
       child: GetMaterialApp(

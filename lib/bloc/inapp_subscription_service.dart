@@ -25,8 +25,8 @@ class IAPService with ChangeNotifier {
   // }
 
   IAPService() {
-    startService();
     RemotConf();
+    startService();
   }
 
   startService() async {
@@ -54,17 +54,26 @@ class IAPService with ChangeNotifier {
       final Set<String> _kIds = {'$id'};
       response = await _conntetion.queryProductDetails(_kIds);
       if (response.notFoundIDs.isNotEmpty) {
-        Get.snackbar('Not Found', "${response.notFoundIDs.toString()}");
+        Get.snackbar(
+          'Not Found',
+          "${response.notFoundIDs.toString()}",
+          snackPosition: SnackPosition.BOTTOM,
+        );
+        return null;
       }
     } catch (e) {
       Get.snackbar('Error', "$e}");
     }
-    return response.productDetails.first;
+    return response.productDetails.length > 0
+        ? response.productDetails.first
+        : null;
   }
 
   Future<bool> purchaseItem(String id, {bool isConsumable = true}) async {
     ProductDetails product = await getProductDetails('$id');
-    return await _processPurchaseItem(product, isConsumable);
+    return product == null
+        ? false
+        : await _processPurchaseItem(product, isConsumable);
   }
 
   Future<bool> consumeItem(String id) async {
